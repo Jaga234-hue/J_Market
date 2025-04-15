@@ -7,6 +7,7 @@
     <title>J_Market</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -36,13 +37,17 @@
                     </div>
                     <i class="bi bi-bell notification"></i>
                     <i class="bi bi-cart addtocart"></i>
+                    <i class="bi bi-box-seam order"> order</i>
                     <!--  <i class="bi bi-cart-plus"></i>  -->
+
                 </div>
                 <div class="main_body">
-                    <div class="offers"></div>
+                    <div class="offers" style="height:150px; width: 100%;">
+                    </div>
                     <div class="login_signup" style="display: none;">
                         <div class="login active">
-                            <form action="" method="post">
+                            <form action="login_signup.php" method="post">
+                                <input type="text" value="login" name="login" hidden="true">
                                 <input type="text" name="mobileNumber" placeholder="Mobile Number" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <input type="submit" name="login" value="Login">
@@ -50,16 +55,20 @@
                             </form>
                         </div>
                         <div class="signup">
-                            <form action="" method="post">
+                            <form action="login_signup.php" method="post">
+                                <input type="text" value="signup" name="signup" hidden="true">
                                 <input type="text" name="name" placeholder="Name" required>
                                 <input type="text" name="mobileNumber" placeholder="Mobile Number" required>
+                                <input type="text" name="email" placeholder="Email" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <input type="submit" name="signup" value="Signup">
                                 <a href="#" class="switch-form">Already have an account? Login</a>
                             </form>
                         </div>
                     </div>
-                    <div class="products_scroll"></div>
+                    <div class="products_scroll" style="height: 100%; width: 100%; border: 3px solid black;">
+                        <div class="Sell"><i class="fas fa-tag" style="margin-right: 8px;"></i>Sell</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,4 +76,5 @@
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>
