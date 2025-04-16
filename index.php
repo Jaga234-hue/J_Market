@@ -65,6 +65,7 @@
                                 <a href="#" class="switch-form">Already have an account? Login</a>
                             </form>
                         </div>
+                        <div class="error"><?php echo isset($_SESSION['error']) ? $_SESSION['error'] : ''; ?></div>
                     </div>
                     <div class="products_scroll" style="height: 100%; width: 100%; border: 3px solid black;">
                         <div class="Sell"><i class="fas fa-tag" style="margin-right: 8px;"></i>Sell</div>

@@ -25,16 +25,17 @@ if (isset($_POST['signup'])) {
                      VALUES ('$name', '$mobile', '$email', '$password')";
     
     if (mysqli_query($conn, $insert_query)) {
+        $_SESSION["j_market_mobile_number"] = $mobile;
         $_SESSION['success'] = "Registration successful! Please login.";
         header("Location: index.php");
     } else {
-        $_SESSION['error'] = "Error: " . mysqli_error($conn);
+        $_SESSION['signUperror'] = "Error: " . mysqli_error($conn);
         header("Location: index.php");
     }
 }
 
 // Handle Login
-if (isset($_POST['login'])) {
+else {
     $mobile = mysqli_real_escape_string($conn, $_POST['mobileNumber']);
     $password = $_POST['password'];
 
@@ -45,8 +46,7 @@ if (isset($_POST['login'])) {
         $user = mysqli_fetch_assoc($result);
         // Verify the password
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
+           $_SESSION["j_market_mobile_number"] = $user['mobile_number'];
             exit();
         } else {
             $_SESSION['error'] = "Invalid password!";
@@ -58,6 +58,5 @@ if (isset($_POST['login'])) {
         exit();
     }
 }
-
 mysqli_close($conn);
 ?>
