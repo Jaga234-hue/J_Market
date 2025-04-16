@@ -6,7 +6,7 @@
         const loginForm = document.querySelector('.login');
         const signupForm = document.querySelector('.signup');
         const switchLinks = document.querySelectorAll('.switch-form');
-
+        const profileinfo = document.querySelector('.profileinfo');
         // Toggle login/signup box
         profiles.forEach(profile => {
             profile.addEventListener('click', function (e) {
@@ -41,4 +41,26 @@
             e.stopPropagation();
         });
     });
+    const info = document.querySelector(".profileinfo");
+  document.querySelector(".profile").addEventListener("click", function () {
+    if (info.style.display === "none" || info.style.display === " ") {
+      info.style.display = "block";
+    } else {
+      info.style.display = "none";
+    }
+  });
+  document.querySelector(".close").addEventListener("click",function(){
+     info.style.display = "none";
+  });
+  let sellTab = null;
+
+document.querySelector(".Sell").addEventListener("click", function() {
+  if (sellTab === null || sellTab.closed) {
+    sellTab = window.open("sellform.php", "_blank");
+  } else {
+    sellTab.focus();
+  }
+});
+
+
 

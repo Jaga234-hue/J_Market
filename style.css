@@ -209,19 +209,183 @@
             border:3px solid black;
         }
         .Sell {
-            width: 150px;
-            height: 50px;
-            border: 10px solid #8282dc; /* match blue border color */
-            border-radius: 20px;
-            color: #0a0a0a;
-            font-size: 30px;
+            width: 180px;
+            height: 60px;
+            border: none;
+            background: linear-gradient(135deg, #ff4e50, #f9d423); /* gradient for more attraction */
+            border-radius: 30px;
+            color: white;
+            font-size: 24px;
             font-weight: bold;
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
-            user-select: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
           }
           
+          .Sell:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+          }
+          
+          .Sell i {
+            font-size: 22px;
+          }
+          
+          /* Optional: For icon, using Font Awesome (add to HTML head) */
+          
+        
+          .profile-box {
+              background: linear-gradient(135deg, #5e60ce, #6930c3, #7400b8);
+              padding: 30px 20px;
+              border-radius: 25px;
+              box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+              width: 320px;
+              color: #fff;
+              text-align: center;
+          }
+  
+          .profile-image {
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              overflow: hidden;
+              margin: 0 auto 20px;
+              border: 3px solid #fff;
+          }
+  
+          .profile-image img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
+  
+          .info-box {
+              background: rgba(255, 255, 255, 0.15);
+              padding: 10px;
+              border-radius: 10px;
+              margin: 10px 0;
+              font-size: 16px;
+          }
+  
+          .profile-actions {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 15px;
+              margin-top: 20px;
+          }
+  
+          .profile-actions .action-box {
+              background: rgba(255, 255, 255, 0.15);
+              border-radius: 15px;
+              padding: 15px 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: transform 0.2s ease;
+          }
+  
+          .profile-actions .action-box:hover {
+              transform: scale(1.05);
+          }
+  
+          .profile-actions i {
+              font-size: 22px;
+              margin-bottom: 5px;
+          }
+  
+          .profile-actions span {
+              font-size: 14px;
+              font-weight: 500;
+          }
+      
+          .profile-box {
+            position: fixed; /* Popup behavior */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Perfect centering */
+            background: linear-gradient(135deg, #5e60ce, #6930c3, #7400b8);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            color: #fff;
+            text-align: center;
+            z-index: 9999; /* Appear on top */
+        }
 
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid #fff;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .profile-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .profile-actions .action-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .profile-actions .action-box:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-actions i {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .profile-actions span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
 

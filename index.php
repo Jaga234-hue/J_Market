@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="homeContainer">
         <div class="headerContainer">
             <div class="leftHeader">
                 <i class="bi bi-list menu"></i>
@@ -44,14 +44,19 @@
                 <div class="main_body">
                     <div class="offers" style="height:150px; width: 100%;">
                     </div>
-                    <div class="login_signup" style="display: none;">
+                    <?php
+                    require_once('db_connect.php');
+                    session_start();
+                    if (!isset($_SESSION["j_market_mobile_number"])) {
+                        echo '
+                        <div class="login_signup" style="display: none;">
                         <div class="login active">
                             <form action="login_signup.php" method="post">
                                 <input type="text" value="login" name="login" hidden="true">
                                 <input type="text" name="mobileNumber" placeholder="Mobile Number" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <input type="submit" name="login" value="Login">
-                                <a href="#" class="switch-form">Don't have an account? Sign Up</a>
+                                <a href="#" class="switch-form">Dont have an account? Sign Up</a>
                             </form>
                         </div>
                         <div class="signup">
@@ -65,8 +70,52 @@
                                 <a href="#" class="switch-form">Already have an account? Login</a>
                             </form>
                         </div>
-                        <div class="error"><?php echo isset($_SESSION['error']) ? $_SESSION['error'] : ''; ?></div>
-                    </div>
+                        </div>
+                        ';
+                    } else {
+                        $stmt = mysqli_prepare($conn, "SELECT name, email FROM users WHERE mobile_number = ?");
+                        mysqli_stmt_bind_param($stmt, "s", $_SESSION["j_market_mobile_number"]);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        if ($row = mysqli_fetch_assoc($result)) {
+                            $name= $row["name"];
+                           $email= $row["email"];
+                        
+                        echo '
+<div class="profileinfo" style="display:none;">
+        <div class="profile-box">
+            <div class= "close">X</div> 
+                <div class="profile-image">
+                        <img src="https://via.placeholder.com/100" alt="User Photo" />
+                        </div>
+
+                        Hello, <h1>John Doe</h1>
+                        <div class="info-box">john.doe@example.com</div>
+
+                        <div class="profile-actions">
+                        <div class="action-box">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Address</span>
+                        </div>
+                        <div class="action-box">
+                        <i class="bi bi-bag-check"></i>
+                        <span>Orders</span>
+                        </div>
+                        <div class="action-box">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Edit</span>
+                        </div>
+                        <div class="action-box">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Help</span>
+            </div>
+        </div>
+    </div>
+</div>
+                        ';
+                    }
+                }
+                    ?>
                     <div class="products_scroll" style="height: 100%; width: 100%; border: 3px solid black;">
                         <div class="Sell"><i class="fas fa-tag" style="margin-right: 8px;"></i>Sell</div>
                     </div>
