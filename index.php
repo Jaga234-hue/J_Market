@@ -41,7 +41,7 @@
                     <!--  <i class="bi bi-cart-plus"></i>  -->
 
                 </div>
-                <div class="main_body">
+                <div class="main_body"> <!-- scroll -->
                     <div class="offers" style="height:150px; width: 100%;">
                     </div>
                     <?php
@@ -78,10 +78,10 @@
                         mysqli_stmt_execute($stmt);
                         $result = mysqli_stmt_get_result($stmt);
                         if ($row = mysqli_fetch_assoc($result)) {
-                            $name= $row["name"];
-                           $email= $row["email"];
-                        
-                        echo '
+                            $name = $row["name"];
+                            $email = $row["email"];
+
+                            echo '
 <div class="profileinfo" style="display:none;">
         <div class="profile-box">
             <div class= "close">X</div> 
@@ -113,12 +113,13 @@
     </div>
 </div>
                         ';
+                        }
                     }
-                }
                     ?>
-                    <div class="products_scroll" style="height: 100%; width: 100%; border: 3px solid black;">
-                        <div class="Sell"><i class="fas fa-tag" style="margin-right: 8px;"></i>Sell</div>
+                    <div class="Sell" onclick="window.open('sellform.php', '_blank')" style="cursor: pointer;">
+                        <i class="fas fa-tag" style="margin-right: 8px;"></i>Sell
                     </div>
+                    <?php include('products.php'); ?>
                 </div>
             </div>
         </div>

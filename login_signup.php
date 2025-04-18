@@ -47,13 +47,16 @@ else {
         // Verify the password
         if (password_verify($password, $user['password'])) {
            $_SESSION["j_market_mobile_number"] = $user['mobile_number'];
+           header("Location: index.php");
             exit();
         } else {
             $_SESSION['error'] = "Invalid password!";
+            header("Location: index.php");
             exit();
         }
     } else {
         $_SESSION['error'] = "User not found!";
+        header("Location: index.php");
 
         exit();
     }

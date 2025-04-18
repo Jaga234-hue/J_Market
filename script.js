@@ -52,15 +52,7 @@
   document.querySelector(".close").addEventListener("click",function(){
      info.style.display = "none";
   });
-  let sellTab = null;
 
-document.querySelector(".Sell").addEventListener("click", function() {
-  if (sellTab === null || sellTab.closed) {
-    sellTab = window.open("sellform.php", "_blank");
-  } else {
-    sellTab.focus();
-  }
-});
 
 
 
