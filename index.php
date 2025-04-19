@@ -119,11 +119,37 @@
                     <div class="Sell" onclick="window.open('sellform.php', '_blank')" style="cursor: pointer;">
                         <i class="fas fa-tag" style="margin-right: 8px;"></i>Sell
                     </div>
-                    <?php include('products.php'); ?>
+                    <div class="products">
+                        <?php
+                        include("db_connect.php");
+                        $stmt = $conn->prepare("SELECT * FROM products");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        for($i=0;$i<10;$i++){
+                        foreach ($result as $row) {
+                            $price = str_replace('From ', '', $row["price"]);
+                            ?>
+                            <div class="card" style="cursor: pointer;">
+                                <div class="card-img">
+                                <img src="<?= htmlspecialchars($row['file_path']) ?>" class="card-img-top"
+                                    alt="<?= htmlspecialchars($row['title']) ?>">
+                                </div>
+                                <div class="card-body">
+                                    
+                                    <p class="card-title"><?= htmlspecialchars($row['title']) ?></p>
+                                    <p class="text-muted"><?= htmlspecialchars($row['brand'] ?? '') ?></p>
+                                    <p class="fw-bold">£<?= htmlspecialchars($price) ?></p>
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
-        <div></div>
     </div>
 </body>
 <script src="script.js"></script>
